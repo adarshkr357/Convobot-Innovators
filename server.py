@@ -4,7 +4,9 @@ from datetime import datetime
 
 from flask import Flask, render_template, request, jsonify
 
+
 app = Flask(__name__, template_folder='templates')
+
 
 @app.route('/')
 def index():
@@ -17,6 +19,7 @@ def index():
     cloud_time_datetime = datetime.fromtimestamp(os.path.getmtime('static/images/cloud.png'))
     cloud_time_timestamp = int(cloud_time_datetime.timestamp())
     return render_template('index.html', style_time=style_time_timestamp, robot_time=robot_time_timestamp, cloud_time=cloud_time_timestamp, js_time=js_time_timestamp)
+
 
 @app.route('/process-data', methods=['POST'])
 def process_data():
@@ -36,6 +39,7 @@ def process_data():
     # response.append(snapdeal)
 
     return jsonify({ 'success': True, 'data': response }), 200
+
 
 if __name__ == '__main__':
     app.run(debug=True)
