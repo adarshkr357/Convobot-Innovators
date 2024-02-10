@@ -10,6 +10,8 @@ app = Flask(__name__, template_folder='templates')
 
 @app.route('/')
 def index():
+    icon_time_datetime = datetime.fromtimestamp(os.path.getmtime('static/images/favicon.png'))
+    icon_time_timestamp = int(icon_time_datetime.timestamp())
     style_time_datetime = datetime.fromtimestamp(os.path.getmtime('static/css/style.css'))
     style_time_timestamp = int(style_time_datetime.timestamp())
     js_time_datetime = datetime.fromtimestamp(os.path.getmtime('static/js/script.js'))
@@ -18,7 +20,7 @@ def index():
     robot_time_timestamp = int(robot_time_datetime.timestamp())
     cloud_time_datetime = datetime.fromtimestamp(os.path.getmtime('static/images/cloud.png'))
     cloud_time_timestamp = int(cloud_time_datetime.timestamp())
-    return render_template('index.html', style_time=style_time_timestamp, robot_time=robot_time_timestamp, cloud_time=cloud_time_timestamp, js_time=js_time_timestamp)
+    return render_template('index.html', icon_time=icon_time_timestamp, style_time=style_time_timestamp, robot_time=robot_time_timestamp, cloud_time=cloud_time_timestamp, js_time=js_time_timestamp)
 
 
 @app.route('/process-data', methods=['POST'])
@@ -32,11 +34,11 @@ def process_data():
     keyword = keyword.replace(' ', '+')
     response = []
 
-    amazon = get_amazon(keyword)
-    # snapdeal = get_snapdeal(keyword)
+    # amazon = get_amazon(keyword)
+    snapdeal = get_snapdeal(keyword)
 
-    response.append(amazon)
-    # response.append(snapdeal)
+    # response.append(amazon)
+    response.append(snapdeal)
 
     return jsonify({ 'success': True, 'data': response }), 200
 

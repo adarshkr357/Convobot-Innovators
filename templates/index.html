@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Convobot Innovators</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename= 'images/favicon.png') }}?v={{ icon_time }}">
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename= 'css/style.css') }}?v={{ style_time }}"
@@ -32,6 +33,7 @@
           alt=""
         />
         <img
+          id="cloud-msg"
           src="{{ url_for('static', filename= 'images/cloud.png') }}?v={{ cloud_time }}"
           class="cloud"
           alt=""
@@ -49,7 +51,7 @@
             <tr>
               <td class="site-name">Web Site Name</td>
               <td rowspan="4" class="product-image">
-                <img src="image-link" alt="Product Image" />
+                <img src="" alt="Product Image" />
               </td>
             </tr>
             <tr>

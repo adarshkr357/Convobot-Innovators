@@ -38,6 +38,8 @@ time.from(".mic", {
 
 });
 
+const cloud = document.getElementById('cloud-msg');
+
 document.addEventListener('DOMContentLoaded', function () {
 	var messageDiv = document.querySelector('.message');
 	var sendButton = document.getElementById('sendButton');
@@ -67,6 +69,7 @@ document.getElementById('micButton').addEventListener('click', function () {
 			let queryDiv = document.getElementById('query');
 
 			recognition.onstart = function () {
+				cloud.src = "../static/images/cloud-listen.png";
 				queryDiv.setAttribute("placeholder", "Listening...");
 			};
 
@@ -82,6 +85,7 @@ document.getElementById('micButton').addEventListener('click', function () {
 			};
 
 			recognition.onerror = function (event) {
+				cloud.src = "../static/images/cloud-mic-error.png";
 				console.error('Recognition error', event.error);
 				queryDiv.setAttribute("placeholder", "Error: " + event.error);
 				recognition.stop();
@@ -89,12 +93,13 @@ document.getElementById('micButton').addEventListener('click', function () {
 
 			recognition.start();
 		})
-		.catch(err => {
-			console.error('Microphone access was denied', err);
+		.catch(_ => {
+			cloud.src = "../static/images/cloud-mic-denied.png";
 		});
 });
 
 document.getElementById('sendButton').addEventListener('click', function () {
+	cloud.src = "../static/images/cloud-processing.png";
 	let query = document.getElementById('query').innerHTML;
 
 	fetch('/process-data', {
@@ -145,10 +150,11 @@ document.getElementById('sendButton').addEventListener('click', function () {
 					tableBody.appendChild(row);
 				});
 			} else {
-				alert(data.error);
+				cloud.src = "../static/images/cloud-data-error.png";
 			};
 		})
 		.catch(error => {
+			cloud.src = "../static/images/cloud-network-error.png";
 			console.error('Error:', error);
 		});
 });
