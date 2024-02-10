@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Convobot Innovators</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename= 'css/style.css') }}?v={{ style_time }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  </head>
+
+  <body>
+    <nav class="nav-bar">
+      <div>
+        <span class="topic">
+          <h3>Conversional Interface</h3>
+        </span>
+      </div>
+    </nav>
+
+    <div class="chat-container">
+      <div id="robot-section">
+        <img
+          src="{{ url_for('static', filename= 'images/robot.png') }}?v={{ robot_time }}"
+          class="robot"
+          alt=""
+        />
+        <img
+          src="{{ url_for('static', filename= 'images/cloud.png') }}?v={{ cloud_time }}"
+          class="cloud"
+          alt=""
+        />
+      </div>
+      <div id="results-section" style="display: none">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="site-name">Web Site Name</td>
+              <td rowspan="4" class="product-image">
+                <img src="image-link" alt="Product Image" />
+              </td>
+            </tr>
+            <tr>
+              <td class="product-title">Product Title</td>
+            </tr>
+            <tr>
+              <td class="product-rating">Product Rating</td>
+            </tr>
+            <tr>
+              <td class="product-price">
+                INR <span class="price">Product Price</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="text-section">
+      <div class="message-container">
+        <div
+          id="query"
+          class="message"
+          contenteditable="true"
+          placeholder="Ask me anything about shopping..."
+        ></div>
+        <span id="sendButton" style="display: none"
+          ><i class="bi bi-arrow-right-circle-fill"></i
+        ></span>
+        <span id="micButton"><i class="bi bi-mic-fill"></i></span>
+      </div>
+    </div>
+    <script src="{{ url_for('static', filename= 'js/script.js') }}?v={{ js_time }}"></script>
+  </body>
+</html>
