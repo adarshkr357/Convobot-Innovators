@@ -144,7 +144,7 @@ document.getElementById('sendButton').addEventListener('click', function () {
 					row.appendChild(ratingCell);
 
 					const priceCell = document.createElement('td');
-					priceCell.textContent = `INR ${result[4]}`;
+					priceCell.textContent = `₹${result[4]}`;
 					row.appendChild(priceCell);
 
 					tableBody.appendChild(row);
