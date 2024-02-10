@@ -116,18 +116,18 @@ h3::before {
 
 .robot {
     height: 20rem;
-    margin-right: 3rem;
+    margin-right: 5rem;
 }
 
 .cloud {
-    height: 30vh;
+    height: 35vh;
     margin-bottom: 15rem;
-    margin-left: -14rem;
+    margin-left: -20rem;
 }
 
 .chat-container {
     position: relative;
-    margin-top: 10vh;
+    margin-top: 5vh;
     width: 100%;
     display: flex;
     align-items: center;
